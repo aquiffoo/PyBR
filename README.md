@@ -1,6 +1,3 @@
-Aqui está o README completo em Markdown, formatado corretamente:
-
-```markdown
 # PyBR
 
 ## Sobre
