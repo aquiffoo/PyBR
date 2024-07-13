@@ -66,6 +66,7 @@ A sintaxe do PyBR utiliza palavras em português para substituir palavras-chave 
 | adicionar_arquivo | open    |
 | com_retorno   | return      |
 | global        | globals()   |
+| senão         | else        |
 
 ## Exemplo de Uso
 
