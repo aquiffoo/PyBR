@@ -21,6 +21,7 @@ def executar_pybr(arquivo_pybr: str):
         "tupla": "Tuple",
         "qualquer": "Any",
         "se": "if",
+        "senão": "else",
         "enquanto": "while",
         "para": "for",
         "tentar": "try",
