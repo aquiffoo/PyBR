@@ -1,2 +1,5 @@
 @echo off
-python C:\Compilador_PyBR\PyBR\compilador.py %1.pybr
+setlocal
+set PYBR_COMPILADOR="C:\Compilador_PyBR\PyBR\compilador.py"
+python %PYBR_COMPILADOR% %1.pybr
+endlocal

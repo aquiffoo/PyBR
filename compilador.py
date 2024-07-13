@@ -1,6 +1,10 @@
 import sys
+import os
 
 def executar_pybr(arquivo_pybr: str):
+    if not os.path.isabs(arquivo_pybr):
+        arquivo_pybr = os.path.abspath(arquivo_pybr)
+
     with open(arquivo_pybr, 'r', encoding='utf-8') as f:
         codigo = f.read()
 
@@ -15,13 +19,15 @@ def executar_pybr(arquivo_pybr: str):
         "tese": "bool",
         "funcao": "Callable",
         "decimal": "float",
-        "lista": "List",
-        "dicionario": "Dict",
+        "lista": "list",
+        "dicionario": "dict",
+        "nao": "not",
         "uniao": "Union",
         "tupla": "Tuple",
         "qualquer": "Any",
         "se": "if",
-        "senão": "else",
+        "senao": "else",
+        "em": "in",
         "enquanto": "while",
         "para": "for",
         "tentar": "try",
@@ -41,15 +47,30 @@ def executar_pybr(arquivo_pybr: str):
         "escrever_arquivo": "open",
         "adicionar_arquivo": "open",
         "com_retorno": "return",
-        "global": "globals()"
+        "global": "globals()",
+        "quebrar": "break",
+        "continuar": "continue"
     }
 
     # Realiza as substituições
     for chave, valor in substituicoes.items():
-        codigo = codigo.replace(chave, valor)
+        codigo = codigo.replace(f" {chave} ", f" {valor} ")
+        codigo = codigo.replace(f"\n{chave} ", f"\n{valor} ")
+        codigo = codigo.replace(f" {chave}\n", f" {valor}\n")
+        codigo = codigo.replace(f"({chave} ", f"({valor} ")
+        codigo = codigo.replace(f" {chave})", f" {valor})")
+        codigo = codigo.replace(f"{chave}(", f"{valor}(")
+        codigo = codigo.replace(f" {chave}.", f" {valor}.")
+        codigo = codigo.replace(f"senao", f"else")
+        codigo = codigo.replace(f"importar", f"import")
 
     # Executa o código
-    exec(codigo, globals())
+    try:
+        exec(codigo, globals())
+    except SyntaxError as e:
+        print(f"Erro de sintaxe no código: {e}")
+        print("Código após substituições:")
+        print(codigo)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
