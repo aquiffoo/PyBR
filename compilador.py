@@ -10,7 +10,7 @@ def executar_pybr(arquivo_pybr: str):
 
     # Substituições das palavras-chave
     substituicoes = {
-        "definir": "def",
+        "definir ": "def ",
         "retornar": "return",
         "escrever": "print",
         "receber": "input",
@@ -25,18 +25,18 @@ def executar_pybr(arquivo_pybr: str):
         "uniao": "Union",
         "tupla": "Tuple",
         "qualquer": "Any",
-        "se": "if",
+        "se ": "if ",
         "senao": "else",
         "em": "in",
-        "enquanto": "while",
+        "enquanto ": "while ",
         "para": "for",
         "tentar": "try",
         "exceto": "except",
         "importar": "import",
-        "como": "as",
+        " como ": " as ",
         "chave": "get",
-        "adicionar": "append",
-        "remover": "remove",
+        ".adicionar": ".append",
+        ".remover": ".remove",
         "encontrar": "next",
         "maiusculo": "upper",
         "minusculo": "lower",
@@ -49,20 +49,26 @@ def executar_pybr(arquivo_pybr: str):
         "com_retorno": "return",
         "global": "globals()",
         "quebrar": "break",
-        "continuar": "continue"
+        "continuar": "continue",
+        "self": "instancia",
+        "atributo ": "self.",
+        "de ": "from ",
+        
     }
 
     # Realiza as substituições
     for chave, valor in substituicoes.items():
         codigo = codigo.replace(f" {chave} ", f" {valor} ")
         codigo = codigo.replace(f"\n{chave} ", f"\n{valor} ")
-        codigo = codigo.replace(f" {chave}\n", f" {valor}\n")
+        codigo = codigo.replace(f"{chave}\n", f"{valor}\n")
         codigo = codigo.replace(f"({chave} ", f"({valor} ")
         codigo = codigo.replace(f" {chave})", f" {valor})")
         codigo = codigo.replace(f"{chave}(", f"{valor}(")
         codigo = codigo.replace(f" {chave}.", f" {valor}.")
-        codigo = codigo.replace(f"senao", f"else")
-        codigo = codigo.replace(f"importar", f"import")
+        
+    # Realiza a substituição do "senao" após o loop
+    codigo = codigo.replace("senao", "else")
+    codigo = codigo.replace("definir ", "def ")
 
     # Executa o código
     try:
