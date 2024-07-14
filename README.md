@@ -9,7 +9,7 @@
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/seuusuario/PyBR.git
+   git clone https://github.com/aquiffoo/PyBR.git
    ```
 
 2. **Adicione a pasta do projeto ao seu PATH:**
