@@ -69,6 +69,9 @@ def executar_pybr(arquivo_pybr: str):
     # Realiza a substituição do "senao" após o loop
     codigo = codigo.replace("senao", "else")
     codigo = codigo.replace("definir ", "def ")
+    codigo = codigo.replace("importar ", "import ")
+    codigo = codigo.replace("se ", "if ")
+    codigo = codigo.replace("enquanto ", "while ")
 
     # Executa o código
     try:
