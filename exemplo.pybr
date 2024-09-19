@@ -1,0 +1,4 @@
+definir ola(nome):
+  retornar f"Olá, {nome}!"
+nome = receber("Qual é o seu nome? ")
+print(ola(nome))
