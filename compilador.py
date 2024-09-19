@@ -30,8 +30,8 @@ def executar_pybr(arquivo_pybr: str):
         "em": "in",
         "enquanto ": "while ",
         "para": "for",
-        "tentar": "try",
-        "exceto": "except",
+        "tentar ": "try ",
+        "exceto ": "except ",
         "importar": "import",
         " como ": " as ",
         "chave": "get",
@@ -66,7 +66,7 @@ def executar_pybr(arquivo_pybr: str):
         codigo = codigo.replace(f"{chave}(", f"{valor}(")
         codigo = codigo.replace(f" {chave}.", f" {valor}.")
         
-    # Realiza a substituição do "senao" após o loop
+    # Certificação de substituições problemáticas
     codigo = codigo.replace("senao", "else")
     codigo = codigo.replace("definir ", "def ")
     codigo = codigo.replace("importar ", "import ")
@@ -83,6 +83,6 @@ def executar_pybr(arquivo_pybr: str):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Uso: python compilador.py <arquivo.pybr>")
+        print("Uso: python compilador.py <nome do arquivo>")
     else:
         executar_pybr(sys.argv[1])
